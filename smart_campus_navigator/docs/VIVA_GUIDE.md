@@ -76,7 +76,7 @@ d[i,j] = min(d[i,j], d[i,k]+d[k,j]). Compare the previous best route with one pa
 
 ## 19. [Algorithms] Why is Floyd-Warshall O(V cubed)?
 
-The three nested loops each iterate over all V vertices. Matrices require O(V squared) space; our optional update trace can need O(V cubed).
+The three nested loops each iterate over all V vertices. Matrices require O(V squared) space; our optional comparison trace can need O(V cubed).
 
 ## 20. [Algorithms] Does Floyd-Warshall support negative edges?
 

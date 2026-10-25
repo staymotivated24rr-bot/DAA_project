@@ -1,0 +1,10 @@
+{
+  "V": 10,
+  "E": 17,
+  "repeats": 50,
+  "warmups": 5,
+  "median_ms": 7.666066,
+  "figure_traces": 3,
+  "cached_base": true,
+  "scope": "Plotly Python frame construction only; excludes UI/network/browser paint and one-time base preparation"
+}

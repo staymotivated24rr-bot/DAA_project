@@ -1,0 +1,19 @@
+{
+  "V": 10,
+  "E": 17,
+  "method": "tracemalloc around one Floyd-Warshall call; excludes preloaded graph, UI and browser",
+  "measurements": [
+    {
+      "trace": false,
+      "events": 0,
+      "current_bytes": 6680,
+      "peak_bytes": 6680
+    },
+    {
+      "trace": true,
+      "events": 1002,
+      "current_bytes": 637208,
+      "peak_bytes": 637776
+    }
+  ]
+}

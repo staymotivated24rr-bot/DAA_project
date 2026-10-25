@@ -126,16 +126,26 @@ def floyd_warshall(graph, trace=True):
     for u in nodes:
         for v, weight in graph.adj[u].items():
             distances[u][v], next_hop[u][v] = weight, v
+    event(steps, trace, 'initialize', 'Start with direct paths, zero diagonal and infinity for missing paths.')
     for k in nodes:
-        event(steps, trace, 'intermediate', f'Allow {k} as an intermediate vertex.', node=k)
         for u in nodes:
             for v in nodes:
-                candidate = distances[u][k] + distances[k][v]
-                if candidate < distances[u][v]:
-                    old = distances[u][v]
+                before = distances[u][v]
+                left, right = distances[u][k], distances[k][v]
+                candidate = left + right
+                improved = candidate < before
+                if improved:
                     distances[u][v] = candidate
                     next_hop[u][v] = next_hop[u][k]
-                    event(steps, trace, 'update', f'Via {k}: {u} to {v} improves from {old:g} to {candidate:g} m.', node=k, pair=(u, v), distance=candidate)
+                # One compact event per actual comparison; never copy the matrix.
+                if trace:
+                    event(steps, True, 'compare',
+                          (f'Going from {u} to {v} through {k} gives a shorter distance; update the table.'
+                           if improved else f'Going from {u} to {v} through {k} does not improve the distance.'),
+                          k=k, i=u, j=v, before=before, left=left, right=right,
+                          candidate=candidate, improved=improved,
+                          next_hop=next_hop[u][v] if improved else None)
+    event(steps, trace, 'complete', 'All intermediate vertices processed. The distance matrix is final.')
     return AllPairs(nodes, distances, next_hop, steps)
 
 
@@ -200,11 +210,18 @@ class DisjointSet:
 def kruskal(graph, trace=True):
     result, groups = Result(), DisjointSet(graph.nodes)
     for u, v, weight in sorted(graph.edges(), key=lambda edge: (edge[2], edge[0], edge[1])):
+        event(result.steps, trace, 'examine', f'Examine {u} - {v}: {weight:g} m; compare its components.',
+              edge=(u, v), weight=weight)
         accepted = groups.union(u, v)
         if accepted:
             result.edges.append((u, v, weight))
             result.total += weight
         event(result.steps, trace, 'accept' if accepted else 'reject',
-              f'{"Choose" if accepted else "Skip cycle edge"} {u} - {v}: {weight:g} m.', edge=(u, v), weight=weight)
+              (f'Accept {u} - {v}: its two components can be joined without a cycle.' if accepted
+               else f'Adding {u} - {v} would form a cycle, so Kruskal skips it.'),
+              edge=(u, v), weight=weight)
     result.connected = bool(graph.nodes) and len(result.edges) == len(graph.nodes) - 1
+    event(result.steps, trace, 'complete',
+          f'Completed minimum spanning {"tree" if result.connected else "forest"}: {result.total:g} m.',
+          total=result.total, connected=result.connected)
     return result

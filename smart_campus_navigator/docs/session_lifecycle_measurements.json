@@ -1,0 +1,14 @@
+{
+  "baseline": {
+    "graph_edits": 12,
+    "total_user_state_keys": 20,
+    "obsolete_revision_index_keys": 13,
+    "active_execution_entries": 0
+  },
+  "fixed": {
+    "graph_edits": 12,
+    "total_user_state_keys": 10,
+    "obsolete_revision_index_keys": 0,
+    "active_execution_entries": 1
+  }
+}
