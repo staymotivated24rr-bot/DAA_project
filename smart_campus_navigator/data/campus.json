@@ -1,0 +1,30 @@
+{
+  "name": "Illustrative Campus (fictional)",
+  "coordinate_system": "Local diagram coordinates in metres; not a real university or geographic map.",
+  "locations": {
+    "Main Gate": [0, 0], "Administrative Block": [100, 80],
+    "Academic Block": [240, 100], "Library": [350, 190],
+    "Laboratory": [380, 20], "Auditorium": [180, 280],
+    "Canteen": [400, 350], "Hostel": [580, 390],
+    "Sports Ground": [180, 470], "Medical Centre": [610, 150]
+  },
+  "edges": [
+    ["Main Gate", "Administrative Block", 140],
+    ["Main Gate", "Academic Block", 300],
+    ["Administrative Block", "Academic Block", 160],
+    ["Administrative Block", "Auditorium", 240],
+    ["Academic Block", "Library", 150],
+    ["Academic Block", "Laboratory", 170],
+    ["Academic Block", "Auditorium", 210],
+    ["Library", "Laboratory", 190],
+    ["Library", "Canteen", 180],
+    ["Library", "Medical Centre", 280],
+    ["Laboratory", "Medical Centre", 290],
+    ["Auditorium", "Sports Ground", 210],
+    ["Auditorium", "Canteen", 260],
+    ["Canteen", "Hostel", 200],
+    ["Canteen", "Sports Ground", 270],
+    ["Hostel", "Medical Centre", 270],
+    ["Hostel", "Sports Ground", 430]
+  ]
+}

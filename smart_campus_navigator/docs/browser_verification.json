@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "browser": "Chromium via Playwright",
+  "viewport": "1440 x 1100",
+  "pages_verified": 6,
+  "javascript_errors": [],
+  "blocked_remote_requests": [],
+  "runtime_network": "All non-local HTTP requests blocked during smoke test",
+  "screenshots": [
+    "dashboard_screenshot.png",
+    "route_screenshot.png"
+  ]
+}

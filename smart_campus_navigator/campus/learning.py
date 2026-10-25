@@ -1,0 +1,26 @@
+"""Shared academic metadata used by the app and generated documents."""
+ALGORITHMS = [
+ dict(name='BFS', objective='Explore reachable vertices; minimum hop counts', strategy='FIFO queue', time='O(V + E)', space='O(V)', advantage='Simple level-by-level exploration', limitation='Ignores walking distances', use='Connectivity and unweighted hop routing'),
+ dict(name='DFS', objective='Explore reachable vertices deeply', strategy='Stack of iterator frames', time='O(V + E)', space='O(V)', advantage='Natural backtracking and component exploration', limitation='Does not optimize route length', use='Exploration and structural graph analysis'),
+ dict(name='Dijkstra', objective='Single-source shortest distances', strategy='Greedy; lazy binary min-heap', time='O((V + E) log V)', space='O(V + E)', advantage='Efficient sparse weighted routing', limitation='Requires nonnegative weights', use='Shortest campus walking route'),
+ dict(name='Floyd-Warshall', objective='All-pairs shortest distances', strategy='Dynamic programming over intermediates', time='O(V³)', space='O(V²)', advantage='One table answers every pair', limitation='Cubic time limits large graphs', use='Small-campus distance matrix'),
+ dict(name='Prim', objective='Minimum spanning tree / forest', strategy='Greedy; lazy crossing-edge heap', time='O((V + E) log V)', space='O(V + E)', advantage='Grows connectivity from a location', limitation='MST routes need not be shortest', use='Low-total-length pathway network'),
+ dict(name='Kruskal', objective='Minimum spanning tree / forest', strategy='Sort edges; Disjoint Set Union', time='O(V + E log E)', space='O(V + E)', advantage='Simple edge-based global selection', limitation='Requires edge sorting', use='Low-total-length pathway network')
+]
+COMPLEXITY_NOTE = '''V is the number of locations; E is the number of undirected paths. Bounds describe computation with trace=False, exclude graph storage O(V + E), and include returned results. The simple graph is prepared with sorted neighbors at edit time. Lazy heaps may retain O(E) entries; log E = O(log V) for simple graphs. Kruskal is typically written O(E log E) for connected graphs; O(V) initializes DSU for isolated vertices. Compact history adds O(V + E) for BFS/DFS/Dijkstra/Prim/Kruskal, and up to O(V³) for Floyd-Warshall. Enabling history preserves asymptotic running time but adds event-object allocation and storage costs. Displaying a long history prefix also costs time beyond the algorithm itself.'''
+PSEUDOCODE = {
+'BFS': 'mark source; enqueue source\nwhile queue is not empty:\n  u = dequeue; output u\n  for each neighbor v of u:\n    if unseen: mark v; enqueue v',
+'DFS': 'mark and output source; push (source, neighbors)\nwhile stack is not empty:\n  inspect next neighbor of top frame\n  if exhausted: pop frame\n  elif unseen: mark, output, push its frame',
+'Dijkstra': 'distance[source] = 0; other distances = infinity\npush (0, source)\nwhile heap is not empty:\n  pop minimum (distance, u); skip if settled\n  settle u\n  for (v, weight) adjacent to u:\n    if distance[u] + weight < distance[v]:\n      update distance[v], parent[v]; push new entry',
+'Floyd-Warshall': 'initialize direct distances and zero diagonal\nfor each intermediate k:\n  for each source i:\n    for each destination j:\n      if d[i,k] + d[k,j] < d[i,j]:\n        d[i,j] = d[i,k] + d[k,j]\n        next[i,j] = next[i,k]',
+'Prim': 'for each component root not yet visited:\n  push (0, root, no parent)\n  while heap is not empty:\n    pop cheapest connection; skip visited endpoint\n    visit endpoint; accept edge if parent exists\n    push its edges to unvisited vertices',
+'Kruskal': 'make a separate set for every vertex\nfor edges in increasing (weight, endpoints) order:\n  if endpoint roots differ:\n    accept edge; union the two sets\n  else: reject cycle edge'
+}
+CORRECTNESS = {
+'BFS': 'The FIFO queue processes vertices in nondecreasing hop distance. A vertex is marked when enqueued, so its first discovery uses the minimum number of edges. Every reachable neighbor is eventually discovered.',
+'DFS': 'Each stack frame scans all neighbors of its vertex before backtracking. Every reachable vertex is therefore entered exactly once; marking prevents cycles from causing repeated visits.',
+'Dijkstra': 'When the smallest tentative distance is settled, no route through an unsettled vertex can improve it: reaching that vertex already costs at least as much, and remaining edges are nonnegative. Relaxation preserves upper bounds until all reachable distances are final.',
+'Floyd-Warshall': 'After intermediate k, d[i,j] is the shortest distance using only the intermediates processed so far. An optimal path either avoids k or splits into i-to-k and k-to-j subpaths. The minimum of these two cases preserves the invariant.',
+'Prim': 'At each step, the chosen edge is a cheapest edge crossing the cut between visited and unvisited vertices in the component. The cut property guarantees that adding it can be extended to an MST. Restarting gives a minimum forest.',
+'Kruskal': 'The next accepted edge is a cheapest edge connecting two current components. The cut property makes it safe; DSU rejects edges that would form cycles. Connected input finishes with V-1 safe edges.'
+}

@@ -1,0 +1,4 @@
+Python 3.12.14
+Linux-6.18.55-x86_64-with-glibc2.41
+perf_counter; 1 warm-up; 7 repetitions per workload; medians in milliseconds.
+Graphs: chain plus seeded random edges (p=0.12); graph generation and trace allocation excluded.

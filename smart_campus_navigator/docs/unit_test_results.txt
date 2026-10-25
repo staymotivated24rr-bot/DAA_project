@@ -1,0 +1,31 @@
+test_all_pairs_agree_on_generated_graphs (test_algorithms.AlgorithmTests.test_all_pairs_agree_on_generated_graphs) ... ok
+test_bfs_order (test_algorithms.AlgorithmTests.test_bfs_order) ... ok
+test_campus_acceptance (test_algorithms.AlgorithmTests.test_campus_acceptance) ... ok
+test_deep_iterative_dfs (test_algorithms.AlgorithmTests.test_deep_iterative_dfs) ... ok
+test_dfs_order (test_algorithms.AlgorithmTests.test_dfs_order) ... ok
+test_dijkstra_known_route (test_algorithms.AlgorithmTests.test_dijkstra_known_route) ... ok
+test_disconnected (test_algorithms.AlgorithmTests.test_disconnected) ... ok
+test_disjoint_set (test_algorithms.AlgorithmTests.test_disjoint_set) ... ok
+test_empty_and_singleton (test_algorithms.AlgorithmTests.test_empty_and_singleton) ... ok
+test_floyd_reconstruction (test_algorithms.AlgorithmTests.test_floyd_reconstruction) ... ok
+test_graph_edits_and_restore (test_algorithms.AlgorithmTests.test_graph_edits_and_restore) ... ok
+test_invalid_graph_operations (test_algorithms.AlgorithmTests.test_invalid_graph_operations) ... ok
+test_invalid_locations (test_algorithms.AlgorithmTests.test_invalid_locations) ... ok
+test_invalid_weights (test_algorithms.AlgorithmTests.test_invalid_weights) ... ok
+test_known_mst (test_algorithms.AlgorithmTests.test_known_mst) ... ok
+test_mst_against_exhaustive_tiny_graph (test_algorithms.AlgorithmTests.test_mst_against_exhaustive_tiny_graph) ... ok
+test_same_source_destination (test_algorithms.AlgorithmTests.test_same_source_destination) ... ok
+test_tied_mst_and_cycles (test_algorithms.AlgorithmTests.test_tied_mst_and_cycles) ... ok
+test_trace_disabled_and_determinism (test_algorithms.AlgorithmTests.test_trace_disabled_and_determinism) ... ok
+test_zero_weights (test_algorithms.AlgorithmTests.test_zero_weights) ... ok
+test_all_pages_and_controls (test_app.ApplicationTests.test_all_pages_and_controls) ... 2026-10-25 17:41:01.216 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_disconnected_and_invalid_form (test_app.ApplicationTests.test_disconnected_and_invalid_form) ... 2026-10-25 17:41:02.929 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_edit_restore_and_same_node (test_app.ApplicationTests.test_edit_restore_and_same_node) ... 2026-10-25 17:41:03.414 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 2.843s
+
+OK

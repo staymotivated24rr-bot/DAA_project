@@ -1,0 +1,132 @@
+{
+  "vertices": 10,
+  "edges": 17,
+  "route": [
+    "Main Gate",
+    "Academic Block",
+    "Library",
+    "Canteen",
+    "Hostel"
+  ],
+  "distance_m": 830,
+  "prim_total_m": 1690,
+  "kruskal_total_m": 1690,
+  "bfs_order": [
+    "Main Gate",
+    "Academic Block",
+    "Administrative Block",
+    "Auditorium",
+    "Laboratory",
+    "Library",
+    "Canteen",
+    "Sports Ground",
+    "Medical Centre",
+    "Hostel"
+  ],
+  "dfs_order": [
+    "Main Gate",
+    "Academic Block",
+    "Administrative Block",
+    "Auditorium",
+    "Canteen",
+    "Hostel",
+    "Medical Centre",
+    "Laboratory",
+    "Library",
+    "Sports Ground"
+  ],
+  "prim_edges": [
+    [
+      "Main Gate",
+      "Administrative Block",
+      140
+    ],
+    [
+      "Administrative Block",
+      "Academic Block",
+      160
+    ],
+    [
+      "Academic Block",
+      "Library",
+      150
+    ],
+    [
+      "Academic Block",
+      "Laboratory",
+      170
+    ],
+    [
+      "Library",
+      "Canteen",
+      180
+    ],
+    [
+      "Canteen",
+      "Hostel",
+      200
+    ],
+    [
+      "Academic Block",
+      "Auditorium",
+      210
+    ],
+    [
+      "Auditorium",
+      "Sports Ground",
+      210
+    ],
+    [
+      "Hostel",
+      "Medical Centre",
+      270
+    ]
+  ],
+  "kruskal_edges": [
+    [
+      "Administrative Block",
+      "Main Gate",
+      140
+    ],
+    [
+      "Academic Block",
+      "Library",
+      150
+    ],
+    [
+      "Academic Block",
+      "Administrative Block",
+      160
+    ],
+    [
+      "Academic Block",
+      "Laboratory",
+      170
+    ],
+    [
+      "Canteen",
+      "Library",
+      180
+    ],
+    [
+      "Canteen",
+      "Hostel",
+      200
+    ],
+    [
+      "Academic Block",
+      "Auditorium",
+      210
+    ],
+    [
+      "Auditorium",
+      "Sports Ground",
+      210
+    ],
+    [
+      "Hostel",
+      "Medical Centre",
+      270
+    ]
+  ]
+}
