@@ -1,0 +1,28 @@
+{
+  "url": "http://127.0.0.1:8504",
+  "viewport": "1440x1100",
+  "repeats": 7,
+  "next_click_to_idle_ms": [
+    284.3,
+    289.068,
+    316.261,
+    256.299,
+    317.659,
+    276.621,
+    254.673
+  ],
+  "median_ms": 284.3,
+  "samples": 162,
+  "sampling_interval_ms": 8,
+  "stale_samples": 15,
+  "title_stale_samples": 0,
+  "minimum_opacity": 1,
+  "title_minimum_opacity": 1,
+  "final_chart": {
+    "opacity": "1",
+    "filter": "none",
+    "visible": true
+  },
+  "javascript_errors": [],
+  "method": "Seven sequential Next clicks after page load; time to progress update and Streamlit idle; actual DOM sampled every 8 ms. Local machine, no CPU/network throttle."
+}

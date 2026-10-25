@@ -1,13 +1,29 @@
 {
   "status": "PASS",
-  "browser": "Chromium via Playwright",
-  "viewport": "1440 x 1100",
-  "pages_verified": 6,
-  "javascript_errors": [],
-  "blocked_remote_requests": [],
-  "runtime_network": "All non-local HTTP requests blocked during smoke test",
-  "screenshots": [
-    "dashboard_screenshot.png",
-    "route_screenshot.png"
-  ]
+  "url": "http://127.0.0.1:8504",
+  "checks": [
+    "Desktop dashboard: 10 vertices / 17 edges",
+    "Dijkstra route, source/destination invalidation, forward/backward navigation",
+    "BFS and DFS, initial boundary, rapid click burst, reset, clear chart",
+    "Kruskal examined/accepted/rejected overlays, complete state and final Next disabled",
+    "Floyd evolving matrix, I/J/K comparison, highlighted update and exact backward replay",
+    "All six Learning Lab algorithms and optional benchmark",
+    "Browser graph editing, fresh history and restoration",
+    "Fresh browser reload",
+    "390-pixel mobile dashboard: no body overflow, visible undimmed graph",
+    "Mobile Floyd table scroll stays inside the page"
+  ],
+  "check_count": 10,
+  "page_errors": [],
+  "console_errors": [],
+  "remote_requests": [],
+  "rapid_click_burst": {
+    "raw_clicks": 5,
+    "resulting_step": 6,
+    "total_steps": 20,
+    "bounded": true
+  },
+  "desktop": "1440x1100",
+  "mobile": "390x844",
+  "public_render_test": "NOT VERIFIED; local server only"
 }

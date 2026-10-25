@@ -89,7 +89,7 @@ for each intermediate k:
         next[i,j] = next[i,k]
 ```
 
-**Walk through the Python.** Read floyd_warshall and AllPairs.path. Two nested dictionary comprehensions initialize distances and next_hop, then direct edges replace infinity. The k/u/v loops try each intermediate. A strict improvement copies next_hop[u][k] as the first hop toward v. AllPairs.path repeatedly follows those first hops; None means unreachable.
+**Walk through the Python.** Read floyd_warshall and AllPairs.path. Two nested dictionary comprehensions initialize distances and next_hop, then direct edges replace infinity. The k/u/v loops try each intermediate and record before, candidate and improvement fields for every comparison when tracing is enabled. A strict improvement copies next_hop[u][k] as the first hop toward v. AllPairs.path repeatedly follows those first hops; None means unreachable.
 
 **Why it works.** After intermediate k, d[i,j] is the shortest distance using only the intermediates processed so far. An optimal path either avoids k or splits into i-to-k and k-to-j subpaths. The minimum of these two cases preserves the invariant.
 
@@ -166,3 +166,6 @@ BFS: “breadth before depth,” use a queue. DFS: “finish the branch,” use 
 
 ## 10. A practical learning session
 First draw the triangle and calculate all answers manually. Next run the route finder and predict the next event before clicking Next. Then remove both gate edges and explain why the source is isolated. Restore the original graph, run the tests, and practise the five-minute script. Finish by explaining one relaxation and one DSU rejection without looking at the screen.
+
+## 11. How the repaired step viewer works
+The fragment in ui/steps.py reruns only its controls and visualization. campus/playback.py keeps one execution per browser session and replays compact events into a Frame. A different page, algorithm, source, destination or actual graph fingerprint resets the index. Unchanged results and a base graph canvas are reused within that session. There is no global mutable graph cache. BFS distinguishes discovered nodes from visited nodes; DFS shows the active stack; Dijkstra shows tentative versus settled distances; Kruskal separates examining, accepting and rejecting an edge. Floyd records every I/J/K comparison and reconstructs a matrix from direct distances plus earlier improvements. Previous applies a shorter event prefix, so it restores exactly the earlier state. This takes O(V²+t) work for a Floyd seek to event t, with O(V²) replay tables instead of storing a full matrix at every step. The final summary matrix and the replay matrix are labelled separately.

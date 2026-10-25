@@ -1,3 +1,5 @@
+test_empty_singleton_floats_and_equal_cost_ties (test_algorithm_oracles.OracleTests.test_empty_singleton_floats_and_equal_cost_ties) ... ok
+test_every_four_vertex_edge_subset (test_algorithm_oracles.OracleTests.test_every_four_vertex_edge_subset) ... ok
 test_all_pairs_agree_on_generated_graphs (test_algorithms.AlgorithmTests.test_all_pairs_agree_on_generated_graphs) ... ok
 test_bfs_order (test_algorithms.AlgorithmTests.test_bfs_order) ... ok
 test_campus_acceptance (test_algorithms.AlgorithmTests.test_campus_acceptance) ... ok
@@ -18,14 +20,50 @@ test_same_source_destination (test_algorithms.AlgorithmTests.test_same_source_de
 test_tied_mst_and_cycles (test_algorithms.AlgorithmTests.test_tied_mst_and_cycles) ... ok
 test_trace_disabled_and_determinism (test_algorithms.AlgorithmTests.test_trace_disabled_and_determinism) ... ok
 test_zero_weights (test_algorithms.AlgorithmTests.test_zero_weights) ... ok
-test_all_pages_and_controls (test_app.ApplicationTests.test_all_pages_and_controls) ... 2026-10-25 17:41:01.216 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_all_pages_and_controls (test_app.ApplicationTests.test_all_pages_and_controls) ... 2026-10-25 18:44:55.898 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_disconnected_and_invalid_form (test_app.ApplicationTests.test_disconnected_and_invalid_form) ... 2026-10-25 17:41:02.929 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_disconnected_and_invalid_form (test_app.ApplicationTests.test_disconnected_and_invalid_form) ... 2026-10-25 18:44:57.557 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_edit_restore_and_same_node (test_app.ApplicationTests.test_edit_restore_and_same_node) ... 2026-10-25 17:41:03.414 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_edit_restore_and_same_node (test_app.ApplicationTests.test_edit_restore_and_same_node) ... 2026-10-25 18:44:58.003 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
+test_graph_edit_invalidates_history_and_restore (test_app.ApplicationTests.test_graph_edit_invalidates_history_and_restore) ... 2026-10-25 18:44:58.531 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_history_and_canvas_not_rebuilt_on_steps (test_app.ApplicationTests.test_history_and_canvas_not_rebuilt_on_steps) ... 2026-10-25 18:44:59.113 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_navigation_boundaries_for_all_six_algorithms (test_app.ApplicationTests.test_navigation_boundaries_for_all_six_algorithms) ... 2026-10-25 18:44:59.451 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_session_state_stays_bounded_across_switches (test_app.ApplicationTests.test_session_state_stays_bounded_across_switches) ... 2026-10-25 18:45:00.733 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_source_destination_and_page_changes_reset (test_app.ApplicationTests.test_source_destination_and_page_changes_reset) ... 2026-10-25 18:45:04.169 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_two_sessions_do_not_share_graph_or_execution (test_app.ApplicationTests.test_two_sessions_do_not_share_graph_or_execution) ... 2026-10-25 18:45:04.705 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-25 18:45:04.962 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_upgrade_cleans_legacy_indices_preserves_graph (test_app.ApplicationTests.test_upgrade_cleans_legacy_indices_preserves_graph) ... 2026-10-25 18:45:05.320 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-25 18:45:05.527 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-25 18:45:05.527 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-25 18:45:05.527 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_blueprint_paths_port_plan_and_dependencies (test_deployment.DeploymentTests.test_blueprint_paths_port_plan_and_dependencies) ... ok
+test_offline_config_and_dev_dependencies_separated (test_deployment.DeploymentTests.test_offline_config_and_dev_dependencies_separated) ... ok
+test_bfs_discovery_is_not_visiting (test_playback.PlaybackTests.test_bfs_discovery_is_not_visiting) ... ok
+test_campus_floyd_final_matrix_and_backward_update (test_playback.PlaybackTests.test_campus_floyd_final_matrix_and_backward_update) ... ok
+test_context_reuse_and_parameter_reset (test_playback.PlaybackTests.test_context_reuse_and_parameter_reset) ... ok
+test_dfs_stack_backtracks (test_playback.PlaybackTests.test_dfs_stack_backtracks) ... ok
+test_dijkstra_retains_settled_tree_on_relaxation (test_playback.PlaybackTests.test_dijkstra_retains_settled_tree_on_relaxation) ... ok
+test_edits_cannot_reuse_stale_results (test_playback.PlaybackTests.test_edits_cannot_reuse_stale_results) ... ok
+test_figure_overlay_colors_and_base_is_immutable (test_playback.PlaybackTests.test_figure_overlay_colors_and_base_is_immutable) ... ok
+test_floyd_every_comparison_matches_independent_matrix (test_playback.PlaybackTests.test_floyd_every_comparison_matches_independent_matrix) ... ok
+test_floyd_highlights_only_real_graph_paths (test_playback.PlaybackTests.test_floyd_highlights_only_real_graph_paths) ... ok
+test_floyd_parameter_change_reuses_readonly_answer_resets_position (test_playback.PlaybackTests.test_floyd_parameter_change_reuses_readonly_answer_resets_position) ... ok
+test_invalid_index_and_algorithm (test_playback.PlaybackTests.test_invalid_index_and_algorithm) ... ok
+test_kruskal_examine_accept_reject_complete (test_playback.PlaybackTests.test_kruskal_examine_accept_reject_complete) ... ok
+test_late_callback_cannot_change_replaced_execution (test_playback.PlaybackTests.test_late_callback_cannot_change_replaced_execution) ... ok
+test_matrix_highlights_and_escapes_labels (test_playback.PlaybackTests.test_matrix_highlights_and_escapes_labels) ... ok
+test_navigation_clamped_and_reversible_for_each_algorithm (test_playback.PlaybackTests.test_navigation_clamped_and_reversible_for_each_algorithm) ... ok
+test_prim_final_forest (test_playback.PlaybackTests.test_prim_final_forest) ... ok
 
 ----------------------------------------------------------------------
-Ran 23 tests in 2.843s
+Ran 50 tests in 9.768s
 
 OK

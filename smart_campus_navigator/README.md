@@ -8,9 +8,9 @@ A local, offline-capable DAA mini-project for course **01AI0506**, using six man
 ## Features
 - Navy/teal Streamlit dashboard and interactive Plotly campus diagram.
 - Dijkstra route finder, all-source distance table, path reconstruction, and explanatory steps.
-- BFS/DFS traversal order with Previous, Next, and Reset controls.
-- Prim/Kruskal selection order and clear disconnected-forest warnings.
-- Floyd-Warshall labelled all-pairs distance matrix and route reconstruction.
+- BFS/DFS traversal order with Previous, Next, and Reset controls inside an independent Streamlit fragment.
+- Prim/Kruskal selection order, amber examination edges, rose dashed cycle rejections, and clear disconnected-forest warnings.
+- Floyd-Warshall labelled final distance matrix, route reconstruction, and genuine I/J/K matrix replay including unsuccessful comparisons.
 - Learning Lab: objectives, strategies, complexity, correctness, pseudocode, worked triangle, and repeated experimental timings.
 - Add, update, remove paths and restore the dataset within the browser session.
 - Actual PDF report, editable PPTX, beginner guide, viva preparation, and demonstration script.
@@ -54,8 +54,9 @@ python3 -m venv .venv
 ```
 
 ## Tests, measurements and artifact generation
-Use the virtual environment Python for these commands:
+Use the virtual environment Python for these commands. Install the separate development dependencies for the full suite (they are not needed to run the app):
 ```sh
+python -m pip install -r requirements-dev.txt
 python -m unittest discover -s tests -v
 python -m compileall -q app.py campus tests tools
 python -m campus.benchmark
@@ -73,9 +74,11 @@ smart_campus_navigator/
   campus/
     graph.py                     Validated graph editing, JSON loader
     algorithms.py                Six algorithms, DSU, structured result/events
-    visualization.py             Plotly diagram and highlights
+    visualization.py             Shared Plotly canvas and semantic overlays
+    playback.py                  Bounded execution state and pure event replay
     learning.py                  Shared theory and pseudocode
     benchmark.py                 Seeded graphs and repeated timing
+  ui/steps.py                    Independent Streamlit step fragment
   data/campus.json                One fictional campus dataset
   tests/test_algorithms.py        Known answers, invariants, edge cases
   tests/test_app.py               Streamlit page/session integration
@@ -101,7 +104,7 @@ smart_campus_navigator/
 - BFS/DFS start in one component. MST algorithms return the minimum forest over all components and report that a complete spanning tree is impossible.
 - Dijkstra completes all reachable single-source distances, so “Nodes settled” includes the complete search even when a destination was selected.
 - Equal-weight shortest routes or MSTs can exist. Alphabetical neighbors and explicit heap/sort ties make this implementation deterministic; different correct implementations may select different equal-cost solutions.
-- Session edits do not write to `campus.json`. They persist across sections of the same session and disappear on a new session or Restore. No file-upload or arbitrary-node editor is needed for this fixed campus.
+- Session edits do not write to `campus.json`. They persist across sections of the same session and disappear on a new session or Restore. Execution history is bounded to one active run per session. No file-upload or arbitrary-node editor is needed for this fixed campus.
 - Construction cost is assumed proportional to length. Accessibility, congestion, slopes, and turn restrictions are outside scope.
 - Step controls are manual; automatic playback is intentionally omitted to keep live demonstrations stable.
 
@@ -116,3 +119,6 @@ smart_campus_navigator/
 - **PDF identity details:** fill the title-page PDF fields in a compatible reader, or edit the generator and regenerate. Slide text boxes are directly editable in PowerPoint.
 
 References: Cormen et al., *Introduction to Algorithms*, 4th ed., MIT Press, 2022; official Python, Streamlit, Plotly, ReportLab, and python-pptx documentation (links in report).
+
+## Playback regression evidence
+See `docs/BUGFIX_REPORT.md`, `docs/interaction_baseline.json`, `docs/interaction_after.json`, and `docs/browser_verification.json`. Install optional development checks with `python -m pip install -r requirements-dev.txt`. Start the app, then run `python tools/verify_browser.py --url http://127.0.0.1:8501`. Public Render verification is distinct from local tests. Do not apply the Blueprint on top of the existing service without checking for duplicate provisioning.
