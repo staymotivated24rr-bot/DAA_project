@@ -1,0 +1,15 @@
+{
+  "status": "live",
+  "url": "https://smart-campus-navigator-7uls.onrender.com",
+  "dashboard_url": "https://dashboard.render.com/web/srv-dbf43fqvcj2c73eou7e0",
+  "service_id": "srv-dbf43fqvcj2c73eou7e0",
+  "deploy_id": "dep-dbf43gqvcj2c73eou990",
+  "commit": "4f462c9b5e6359856ca1527433d22d9d6d94e66f",
+  "finished_at_utc": "2026-10-25T17:53:40.699640Z",
+  "plan": "free",
+  "region": "singapore",
+  "auto_deploy": false,
+  "verification": "Render live status and successful startup logs; 23 local unit/integration tests passed. Public HTTP/browser verification blocked by workspace outbound policy (proxy 403).",
+  "health_check": "Render default TCP readiness; the app also exposes /_stcore/health.",
+  "current_documentation": "Render Markdown and HTML documentation retrieval was blocked by workspace outbound policy; deployment used connected tool schema and existing free-plan settings."
+}

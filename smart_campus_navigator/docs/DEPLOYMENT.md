@@ -1,51 +1,58 @@
-# Hosting deployment
+# Live deployment
 
-## Prepared target: Render web service
+Public application: https://smart-campus-navigator-7uls.onrender.com
 
-The repository-root `render.yaml` defines a free Python web service named
-`smart-campus-navigator`. It installs the four tested direct dependency versions,
-starts the original Streamlit app on the host-provided PORT, and checks
-`/_stcore/health`. No database, secret, authentication system or paid plan is
-configured. Automatic deploys are disabled so publishing remains explicit.
+Render dashboard: https://dashboard.render.com/web/srv-dbf43fqvcj2c73eou7e0
 
-The deployment uses the original Python algorithms and UI. It does not replace
-Streamlit with a separate web implementation. Streamlit needs a Python server
-and WebSocket support. A regular long-running web-service host fits its
-session-state behavior.
+## Deployment record
 
-## Source layout
+- Workspace: Rakshith's workspace (explicitly confirmed by the user).
+- Compute plan: free; no paid resources were created.
+- Region: Singapore.
+- Repository: https://github.com/staymotivated24rr-bot/DAA_project
+- Branch: main.
+- Deployed application commit: 4f462c9b5e6359856ca1527433d22d9d6d94e66f.
+- Service ID: srv-dbf43fqvcj2c73eou7e0.
+- Deploy ID: dep-dbf43gqvcj2c73eou990.
+- Render reports `live`; finished at 2026-10-25 17:53:40 UTC.
+- Automatic deployments are disabled. Later documentation-only commits do not change the running application.
 
-Repository: https://github.com/staymotivated24rr-bot/DAA_project
+The single service was created directly through the Render connection. The
+repository-root render.yaml remains an alternative reproducible Blueprint; do
+not apply it on top of this service without checking for duplicate provisioning.
+The direct creation tool did not expose root-directory or HTTP-health-path
+settings, so both commands explicitly enter the application folder and the
+service uses Render's default TCP readiness checks.
 
-Blueprint location: `render.yaml` at repository root.
-Application root: `smart_campus_navigator`.
+## Commands used by the live service
 
-The source files and blueprint must be committed and pushed before Render can
-build from Git. Preparing these files locally does not mean the remote Git
-repository has been updated or the service has been deployed.
+Build:
+```sh
+cd smart_campus_navigator && python -m pip install -r requirements-tested.txt
+```
 
-## Deployment access
+Start:
+```sh
+cd smart_campus_navigator && exec python -m streamlit run app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true
+```
 
-Render is connected. The user confirmed Rakshith's workspace and the free plan.
-The source is being published before service creation. A public deployment is
-complete only after Render reports live and the application has been checked.
-The connected Render account also needs access to the source GitHub repository.
+Python version: 3.12.14. No API key, database, login system or external data
+service is required. Render supplies PORT; the startup log confirmed port 10000.
 
-Once account access is available, publish the project source, create the web
-service from this blueprint, wait for its build, and verify the public service:
+## Verification and limits
 
-1. `/_stcore/health` returns HTTP 200.
-2. Dashboard shows ten locations and seventeen paths.
-3. Main Gate → Hostel shows 830 m.
-4. Prim and Kruskal show 1690 m with nine selected edges.
-5. Next/Previous/Reset controls work over the public WebSocket connection.
-6. A temporary shortcut changes the route and Restore returns it to 830 m.
+All 23 local algorithm and Streamlit integration tests passed before deployment.
+Render built successfully, started Streamlit, passed readiness and reported the
+deploy live. The execution environment blocks outbound requests to onrender.com
+with proxy HTTP 403, so no public HTTP/browser flow test is claimed. Local
+Chromium had already verified all six sections with external requests blocked.
+Current Render documentation retrieval was also blocked; the connected tool's
+actual schema and API responses were used for deployment configuration.
 
-## Hosting behavior
+When opening the public URL, confirm Main Gate → Hostel gives 830 m and Prim /
+Kruskal each give 1690 m with nine selected edges. Inspect step buttons and test
+a temporary shortcut followed by Restore original graph.
 
-A free Render service can sleep while idle and has a cold start when reopened.
-Availability and quotas depend on the account and provider. Browser-session graph
-edits are temporary; a server restart can clear them. For an examiner, open the
-public URL before the demonstration and keep the offline Windows copy as a
-backup. No paid plan or billing upgrade is authorized or required by this
-configuration.
+A free Render service can sleep when idle, so the first visit may take longer.
+Session graph changes are temporary and can disappear on server restart. Keep
+the offline project as a classroom-demo backup.
